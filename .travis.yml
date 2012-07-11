@@ -1,0 +1,5 @@
+language: ruby
+branches:
+  only:
+    - travis
+script: 'bundle exec rake spec --trace'
