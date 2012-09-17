@@ -2,11 +2,19 @@ require 'spec_helper'
 
 describe QuickLogger do
   class TestLogger < QuickLogger; end
+  context 'when explicitly setting the filename' do
+    it 'should set filename value as expected' do
+      filename = 'something_else'
+      TestLogger.filename = filename
+      TestLogger.filename.should == filename
+    end
+  end
 
-  it 'should have filename accessor' do
-    filename = 'something_else'
-    TestLogger.filename = filename
-    TestLogger.filename.should == filename
+  context 'when no explicit filename is set' do
+    it 'has default filename' do
+      TestLogger.instance_variable_set '@filename', nil
+      QuickLogger.filename.should == QuickLogger::DEFAULT_FILENAME
+    end
   end
 
   describe 'filename_path' do
