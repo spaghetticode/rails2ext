@@ -2,4 +2,4 @@
 .bundle
 Gemfile.lock
 pkg/*
-something_else.log
+*.log
